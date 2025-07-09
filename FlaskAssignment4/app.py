@@ -40,16 +40,16 @@ def kunwariLogin():
 # the key is `task`) in tasks
 # render the html
 # visit todo.html to see the html code
-# tasks = []
-# @app.route('/todo', methods=['GET', 'POST'])
-# def todo():
-#     if request.method == "POST":
-#         ...
-
-#     return render_template("todo.html", tasks=tasks)
-
-   
-
+tasks = [] # empty list pag lalagyan ng tasks
+@app.route('/todo', methods=['GET', 'POST'])
+def todo():
+    if request.method == "POST":
+        # kunin yung task from the form
+        new_task = request.form.get('task')
+        # pag add ng task if meron
+        if new_task:
+            tasks.append(new_task)
+    return render_template("todo.html", tasks=tasks)   
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
